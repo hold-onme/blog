@@ -6,13 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hexo</title>
+  <title>整活 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="整活">
+<meta property="og:url" content="http://yoursite.com/2020/05/08/%E6%95%B4%E6%B4%BB/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-08T15:10:31.000Z">
+<meta property="article:modified_time" content="2020-05-08T15:10:32.010Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,223 +152,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-java日期时间处理集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-整活" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/21/java%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86%E9%9B%86%E5%90%88/">java日期时间处理集合</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2020/05/21/java%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2020-05-21T13:14:36.980Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="java-日期时间处理集合"><a href="#java-日期时间处理集合" class="headerlink" title="java 日期时间处理集合"></a>java 日期时间处理集合</h2><p>//时间格式化</p>
-<pre><code>SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);</code></pre><hr>
-<p>//获取当前时间</p>
-<pre><code>Date currentTime = new Date();
-System.out.println(String.format(&quot;系统当前时间:%s&quot;,dateFormat.format(currentTime)));</code></pre><p>//输出</p>
-<pre><code>2019-04-11 11:07:57</code></pre><hr>
-<p>//时间字符串转日期类型，以下时间加减均以此时间为基础</p>
-<pre><code>String strTime = &quot;2019-04-10 18:18:78&quot;;
-Date fixedTime;
-try{
-    //特定时间字符串转为日期类型，需要处理ParseException异常
-    //注意，时间字符串格式要与dateFormat定义的一致，否则引发异常
-    fixedTime = dateFormat.parse(strTime);
-}
-catch (ParseException ex){
-    fixedTime = new Date();
-    ex.printStackTrace();
-}
-System.out.println(String.format(&quot;字符转换时间:%s，
-以下时间加减均以此时间为基础&quot;,dateFormat.format(fixedTime)));</code></pre><p>//输出</p>
-<pre><code>字符转换时间:2019-04-10 18:19:18，以下时间加减均以此时间为基础</code></pre><hr>
-<p>//使用Calendar来实现加减1小时，1天，1个月和1年</p>
-<pre><code>Calendar calendar = Calendar.getInstance();
-//指定时间减1小时
-calendar.setTime(fixedTime);
-calendar.add(Calendar.HOUR_OF_DAY, -1);
-System.out.println(String.format(&quot;1小时之前的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间加1小时
-calendar.setTime(fixedTime);
-calendar.add(Calendar.HOUR_OF_DAY, 1);
-System.out.println(String.format(&quot;1小时之后的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间减1天
-calendar.setTime(fixedTime);
-calendar.add(Calendar.DAY_OF_YEAR, -1);
-System.out.println(String.format(&quot;1天之前的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间加1天
-calendar.setTime(fixedTime);
-calendar.add(Calendar.DAY_OF_YEAR, 1);
-System.out.println(String.format(&quot;1天之后的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间减1个月
-calendar.setTime(fixedTime);
-calendar.add(Calendar.MONTH, -1);
-System.out.println(String.format(&quot;1个月之前的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间加1个月
-calendar.setTime(fixedTime);
-calendar.add(Calendar.MONTH, 1);
-System.out.println(String.format(&quot;1个月之后的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间减1年
-calendar.setTime(fixedTime);
-calendar.add(Calendar.YEAR, -1);
-System.out.println(String.format(&quot;1年之前的时间:%s&quot;, dateFormat.format(calendar.getTime())));
-//指定时间加1年
-calendar.setTime(fixedTime);
-calendar.add(Calendar.YEAR, 1);
-System.out.println(String.format(&quot;1年之后的时间:%s&quot;, dateFormat.format(calendar.getTime())));</code></pre><p>//输出</p>
-<pre><code>10分钟之前的时间:2019-04-10 18:09:18
-10分钟之后的时间:2019-04-10 18:29:18
-1小时之前的时间:2019-04-10 17:19:18
-1小时之后的时间:2019-04-10 19:19:18
-1天之前的时间:2019-04-09 18:19:18
-1天之后的时间:2019-04-11 18:19:18
-1个月之前的时间:2019-03-10 18:19:18
-1个月之后的时间:2019-05-10 18:19:18
-1年之前的时间:2018-04-10 18:19:18
-1年之后的时间:2020-04-10 18:19:18</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/21/java%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%A4%84%E7%90%86%E9%9B%86%E5%90%88/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-String、StringBuffer与StringBuilder之间区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/21/String%E3%80%81StringBuffer%E4%B8%8EStringBuilder%E4%B9%8B%E9%97%B4%E5%8C%BA%E5%88%AB/">String、StringBuffer与StringBuilder之间区别</a>
-    </h1>
-  
-
-        
-        <a href="/blog/2020/05/21/String%E3%80%81StringBuffer%E4%B8%8EStringBuilder%E4%B9%8B%E9%97%B4%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2020-05-21T12:19:13.523Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Java-String-类——String字符串常量"><a href="#Java-String-类——String字符串常量" class="headerlink" title="Java String 类——String字符串常量"></a>Java String 类——String字符串常量</h2><p>简要的说， String 类型和 StringBuffer 类型的主要性能区别其实在于 String 是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，这样不仅效率低下，而且大量浪费有限的内存空间，所以经常改变内容的字符串最好不要用 String 。因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。</p>
-<h2 id="StringBuffer-和-StringBuilder-类——StringBuffer、StringBuilder字符串变量"><a href="#StringBuffer-和-StringBuilder-类——StringBuffer、StringBuilder字符串变量" class="headerlink" title="StringBuffer 和 StringBuilder 类——StringBuffer、StringBuilder字符串变量"></a>StringBuffer 和 StringBuilder 类——StringBuffer、StringBuilder字符串变量</h2><p><strong>StringBuffer 字符串变量（线程安全）</strong></p>
-<p><strong>StringBuilder 字符串变量（非线程安)</strong></p>
-<p>当对字符串进行修改的时候，特别是字符串对象经常改变的情况下，需要使用 StringBuffer 和 StringBuilder 类。</p>
-<p>和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。</p>
-<p>StringBuilder 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（不能同步访问）。</p>
-<p>由于 StringBuilder 相较于 StringBuffer 有速度优势，所以多数情况下建议使用 StringBuilder 类。然而在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。</p>
-<p>（1）字符修改上的区别（主要，见三者区别.jpg）</p>
-<p>（2）初始化上的区别，String可以空赋值，后者不行，报错</p>
-<p>①String</p>
-<p>String s = null;   </p>
-<p>String s = “abc”;   </p>
-<p>②StringBuffer</p>
-<p>StringBuffer s = null; //结果警告：Null pointer access: The variable result can only be null at this location</p>
-<p>StringBuffer s = new StringBuffer();//StringBuffer对象是一个空的对象</p>
-<p>StringBuffer s = new StringBuffer(“abc”);//创建带有内容的StringBuffer对象,对象的内容就是字符串”</p>
-<p>小结：（1）如果要操作少量的数据用 String；</p>
-<p>（2）多线程操作字符串缓冲区下操作大量数据 StringBuffer；</p>
-<p>（3）单线程操作字符串缓冲区下操作大量数据 StringBuilder。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/21/String%E3%80%81StringBuffer%E4%B8%8EStringBuilder%E4%B9%8B%E9%97%B4%E5%8C%BA%E5%88%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-整活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/08/%E6%95%B4%E6%B4%BB/">整活</a>
+    <h1 class="article-title" itemprop="name">
+      整活
     </h1>
   
 
@@ -383,6 +176,27 @@ System.out.println(String.format(&quot;1年之后的时间:%s&quot;, dateFormat.
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -390,16 +204,84 @@ System.out.println(String.format(&quot;1年之后的时间:%s&quot;, dateFormat.
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/08/%E6%95%B4%E6%B4%BB/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/08/%E6%95%B4%E6%B4%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/blog/2020/05/21/String%E3%80%81StringBuffer%E4%B8%8EStringBuilder%E4%B9%8B%E9%97%B4%E5%8C%BA%E5%88%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          String、StringBuffer与StringBuilder之间区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2020/05/08/SpringBoot%E6%95%B4%E5%90%88%E8%A7%86%E5%9B%BE%E5%B1%82%E6%8A%80%E6%9C%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot整合视图层技术</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -419,218 +301,14 @@ System.out.println(String.format(&quot;1年之后的时间:%s&quot;, dateFormat.
 
 
 
-
   
-    <article id="post-SpringBoot整合视图层技术" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/08/SpringBoot%E6%95%B4%E5%90%88%E8%A7%86%E5%9B%BE%E5%B1%82%E6%8A%80%E6%9C%AF/">SpringBoot整合视图层技术</a>
-    </h1>
   
 
-        
-        <a href="/blog/2020/05/08/SpringBoot%E6%95%B4%E5%90%88%E8%A7%86%E5%9B%BE%E5%B1%82%E6%8A%80%E6%9C%AF/" class="archive-article-date">
-  	<time datetime="2020-05-08T12:19:21.799Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="SpringBoot整合视图层技术"><a href="#SpringBoot整合视图层技术" class="headerlink" title="SpringBoot整合视图层技术"></a>SpringBoot整合视图层技术</h1><h2 id="SpringBoot整合JSP技术"><a href="#SpringBoot整合JSP技术" class="headerlink" title="SpringBoot整合JSP技术"></a>SpringBoot整合JSP技术</h2><ol>
-<li>创建项目</li>
-<li>修改POM文件，添加JSP引擎与JSTL标签库</li>
-<li>创建webapp目录</li>
-<li>标记为web目录</li>
-<li>创建jsp</li>
-<li>修改配置文件，配置视图解析器</li>
-</ol>
-<h2 id="SpringBoot整合Thymeleaf"><a href="#SpringBoot整合Thymeleaf" class="headerlink" title="SpringBoot整合Thymeleaf"></a>SpringBoot整合Thymeleaf</h2><p><strong>Thymeleaf介绍</strong></p>
-<p>  Thymeleaf的主要目标是将优雅的自然模板带到开发工作流程中，并将HTML在浏览器中正确显示，并且可以作为静态原型，让开发团队能更容易地协作。Thymeleaf能够处理HTML，XML，JavaScript，CSS甚至纯文本。</p>
-<p>  长期以来，JSP在视图领域有非常重要的地位，随着时间的变迁，出现了一位新的挑战者：Thymeleaf，Thymeleaf是原生的，不依赖于标签库，它能够在接受原始HTML的地方进行编辑和渲染，因为他没有Servlet规范耦合，因此Thymeleaf模板能进入JSP所无法涉足的领域。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/08/SpringBoot%E6%95%B4%E5%90%88%E8%A7%86%E5%9B%BE%E5%B1%82%E6%8A%80%E6%9C%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-My-New-Pst" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/08/My-New-Pst/">My New Pst</a>
-    </h1>
   
 
-        
-        <a href="/blog/2020/05/08/My-New-Pst/" class="archive-article-date">
-  	<time datetime="2020-05-08T12:15:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/08/My-New-Pst/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2020/05/08/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/blog/2020/05/08/hello-world/" class="archive-article-date">
-  	<time datetime="2020-05-08T09:49:23.377Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/blog/2020/05/08/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -653,8 +331,8 @@ System.out.println(String.format(&quot;1年之后的时间:%s&quot;, dateFormat.
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
